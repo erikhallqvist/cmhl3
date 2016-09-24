@@ -1,0 +1,92 @@
+
+body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
+  margin: 0; padding: 0; border: 0;
+}
+
+body {
+  background: #841F27 url(bg.png);
+  font-family: Helvetica, sans-serif; font-size: 18px; line-height: 18px;
+}
+
+nav {
+  margin: 10px auto;
+  text-align: center;
+}
+
+nav ul ul {
+  display: none;
+}
+
+  nav ul li:hover > ul {
+    display: block;
+  }
+
+nav ul {
+  background: #efefef; 
+  background: linear-gradient(top, #EFE1C6 0%, #000000 100%);
+  background: -moz-linear-gradient(top, #EFE1C6 0%, #000000 100%);
+  background: -webkit-linear-gradient(top, #EFE1C6 0%,#000000 100%);
+  box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+  padding: 0 10px;
+  border-radius: 10px;
+  list-style: none;
+  position: relative;
+  display: inline-table;
+}
+
+  nav ul:after {
+    content: ""; clear: both; display: block;
+  }
+
+  nav ul li {
+    float: left;
+  }
+    nav ul li:hover {
+      background: #EFE1C6;
+      background: linear-gradient(top, #4f5964 0%, #000 40%);
+      background: -moz-linear-gradient(top, #4f5964 0%, #000 40%);
+      background: -webkit-linear-gradient(top, #4f5964 0%, #000 40%);
+    }
+      nav ul li:hover a {
+        color: #fff;
+      }
+
+    #topnav ul li a {
+      display: block; padding: 15px 40px;
+      color: #fff; text-decoration: none;
+    }
+
+  nav ul ul {
+    background: #000; border-radius: 0px; padding: 0;
+    position: absolute; top: 100%;
+  }
+    nav ul ul li {
+      float: none; 
+      border-top: 1px solid #EFE1C6;
+      border-bottom: 1px solid #EFE1C6; position: relative;
+    }
+      nav ul ul li a {
+        padding: 15px 40px;
+        color: #fff;
+      }
+        nav ul ul li a:hover {
+          background: #4b545f;
+          background: linear-gradient(top, #4f5964 0%, #000 40%);
+          background: -moz-linear-gradient(top, #4f5964 0%, #000 40%);
+          background: -webkit-linear-gradient(top, #4f5964 0%, #000 40%);
+        }
+  nav ul ul ul {
+    position: absolute; left: 100%; top:0;
+  }
+
+#bannertop {
+  height: 150px;
+  background: -webkit-linear-gradient(#EFE1C6, #841F27); /* For Safari > 5.1 */
+  background: -o-linear-gradient(#EFE1C6, #841F27); /* For Opera > 11.1 */
+  background: -moz-linear-gradient(#EFE1C6, #841F27); /* For Firefox > 3.6  */
+  background: linear-gradient(#EFE1C6, #841F27); /* Standard syntax */
+}
+
+#logolinks {
+  width: 240px;
+}
