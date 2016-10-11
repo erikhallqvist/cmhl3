@@ -5,29 +5,35 @@
 
 <script>
 $(document).ready(function() {
-console.log($('#ufa'));
-$( '#ufa' ).on( 'submit', function(e) {
-  e.preventDefault();
-  $.ajax({
-    type: "post",
-    url: '/enter_offer',
-    data: "test",
-    dataType: "json",
-    success: function( msg ) {
-                  $("body").append("<div>"+msg+"</div>");
-    },
-    error: function(data){
-      alert("fail");
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
+  })
+
+  $( '#ufa' ).on( 'submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: '/enter_offer',
+      data: $(this).serialize(),
+      dataType: "json",
+      success: function(data) {
+        console.log(data)
+      },
+      error: function(data){
+        console.log("fail");
+      }
+    });
   });
-});
 });
 </script>
    <div class="infobox">
 
       <form id="ufa" name="ufa" >
         <label for="player">Player Name</label>
-        <input id="player" type="text" value="" />
+        <input name="player" type="text" value="" />
         <br>
         <label for="years">Number of Years</label>
         <select name="years">
@@ -37,7 +43,7 @@ $( '#ufa' ).on( 'submit', function(e) {
         </select>
         </br>
         <label for="salary">Salary: $</label>
-        <input id="salary" type="text" value="" />
+        <input name="salary" type="text" value="" />
         <br>
         <label for="team">Team</label>
         <select name="team">

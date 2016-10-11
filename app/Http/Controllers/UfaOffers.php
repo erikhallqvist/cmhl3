@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\UfaReason;
 use App\Models\UfaOffer;
 use App\Models\TeamInfo;
-//use Illuminate\Http\Request;
-use Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
+//use Request;
 
 class UfaOffers extends Controller
 {
@@ -58,19 +60,37 @@ class UfaOffers extends Controller
     /*
      * Save offer
      */
-    public function store()//Request $request)
+    public function store(Request $request)
     {
       $this->layout = null;
-      if(Request::ajax())
+      $input = $request->all();
+      Log::info('Showing input var: '.$input['player']);
+      $offer = new UfaOffer;
+
+      //save these specific values:
+
+      $offer->player_name = $input['player'];
+      $offer->isAccepted = (1 == $input['reason']); // 1 Means accepted
+      $offer->years = $input['years'];
+      $offer->team_id = $input['team'];
+      $offer->reason_id = $input['reason'];
+      $offer->salary = $input['salary'];
+
+      $offer->save();
+
+      if($request->isMethod('post'))
       {
         $response = array (
           'status'  => 'success',
-          'msg'     => 'herpaderp'
+          'msg'     => $input['player'] . ' entered.'
         );
-        return Response::json($response);
+        return response()->json(['response' => $response]);
       } else {
-        return 'Something went wrong with the form submission.';
-
+        $response = [
+          'status' => 'fail',
+          'msg'    => 'Something went wrong with the form submission'
+        ];
+        return response()->json(['response' => $response]);
       }
     }
 }

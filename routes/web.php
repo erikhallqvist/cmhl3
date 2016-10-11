@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/ufa_offers', 'UfaOffers@index');
 Route::get('/enter_offer', 'UfaOffers@enter');
-Route::post('enter_offer', 'UfaOffers@store');
+Route::post('/enter_offer', 'UfaOffers@store');
 
 Route::get('/team/{id}', 'Team@display');
 
