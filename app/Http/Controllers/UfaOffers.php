@@ -59,10 +59,21 @@ class UfaOffers extends Controller
 
     /*
      * Save offer
+     * inline for now.
      */
     public function store(Request $request)
     {
       $this->layout = null;
+
+      // First, light validation
+      $this->validate($request, [
+        'player'      => 'required|string|max:60',
+        'years'       => 'required|numeric|min:1|max:4',
+        'team'        => 'required|exists:teaminfo,team_id',
+        'reason'      => 'required|exists:ufa_reasons,id',
+        'salary'      => 'required|digits_between:6,8',
+      ]);
+
       $input = $request->all();
       Log::info('Showing input var: '.$input['player']);
       $offer = new UfaOffer;

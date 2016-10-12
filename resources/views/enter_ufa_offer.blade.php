@@ -19,17 +19,32 @@ $(document).ready(function() {
       url: '/enter_offer',
       data: $(this).serialize(),
       dataType: "json",
+      // Print message and reset form
       success: function(data) {
-        console.log(data)
+        successHtml =  '<div class="alert alert-success">';
+        successHtml += data['response']['msg'];
+        successHtml += '</div>';
+        $('#result').html(successHtml);
+        $('#ufa')[0].reset();
       },
       error: function(data){
-        console.log("fail");
+        var errors = data.responseJSON; // Grab Validation errors
+        console.log(errors);
+        errorHtml = '<div class="alert alert-danger"><ul>';
+        $.each(errors, function(key, value) {
+          errorHtml += '<li>' + value[0] + '</li>';
+        });
+        errorHtml += '</ul></div>';
+        $('#result').html(errorHtml);
       }
     });
   });
 });
+
 </script>
-   <div class="infobox">
+    <div id="result">
+    </div>
+    <div class="infobox">
 
       <form id="ufa" name="ufa" >
         <label for="player">Player Name</label>
