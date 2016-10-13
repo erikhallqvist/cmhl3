@@ -5,9 +5,6 @@ use App\Models\UfaReason;
 use App\Models\UfaOffer;
 use App\Models\TeamInfo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-
-//use Request;
 
 class UfaOffers extends Controller
 {
@@ -23,20 +20,21 @@ class UfaOffers extends Controller
 
     /**
      * List all the offers for now
-     * TODO: Filter by date
+     * TODO: Pagination (or chunks)
      */
     public function index()
     {
-      // GM, Players, Goalies, Farm
+      // Grab offers, with team names and reasons
       $offers = UfaOffer::query()
-        ->get()
-        ->all();
-      $reasons = UfaReason::query()
+        ->orderBy('created_at', 'desc')
+        ->join('teaminfo', 'ufa_offers.team_id', '=', 'teaminfo.team_id')
+        ->join('ufa_reasons', 'ufa_offers.reason_id', '=', 'ufa_reasons.id')
+        ->select('ufa_offers.*', 'teaminfo.team', 'ufa_reasons.reason')
         ->get()
         ->all();
       return view('ufa_offers',
-        ['offers'  => $offers,
-         'reasons' => $reasons]);
+        ['offers'   => $offers]
+      );
 
     }
 
@@ -75,7 +73,6 @@ class UfaOffers extends Controller
       ]);
 
       $input = $request->all();
-      Log::info('Showing input var: '.$input['player']);
       $offer = new UfaOffer;
 
       //save these specific values:

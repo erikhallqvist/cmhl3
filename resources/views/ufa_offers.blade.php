@@ -1,16 +1,22 @@
-<!-- resources/views/team.blade.php -->
+<!-- resources/views/ufa_offers.blade.php -->
 
-<html>  
-<head>  
-    <title>CMHL - Cyber Management Hockey League</title>
-    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href='http://fonts.googleapis.com/css?family=Alegreya:400,700|Roboto+Condensed' rel='stylesheet' type='text/css'>
-</head>
-<body>
-<div class="container">  
-    <div class="quote-container">
-      The id is {{$offers}} {{reasons}}
+
+  @extends('layouts.master')
+  @section('content')
+    <div>
+      <ul class="result-list">
+        @foreach ($offers as $offer)
+          @if ($offer->isAccepted)
+            <li class="alert-success">
+          @else
+            <li class="alert-error">
+          @endif
+              <img src="images/logos/TL{{ $offer->team_id  }}.gif" style="width:30px;height:30px" />
+              {{ $offer->created_at }} {{ $offer->team }} offers {{ $offer->player_name}} a {{ $offer->years }}
+              year contract worth ${{ $offer->salary }} per season. {{ $offer->reason }}
+          </li>
+        @endforeach
+      </ul>
     </div>
-</div>  
-</body>  
-</html> 
+  @stop
+

@@ -51,3 +51,9 @@
 }
 
 /* End Borrowing from Bootstrap */
+
+.result-list li{
+  border-radius: 0.2em;
+  padding: 0.2em;
+  margin:0.4em;
+}
