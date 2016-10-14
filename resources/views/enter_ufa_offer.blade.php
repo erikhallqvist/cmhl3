@@ -14,6 +14,7 @@ $(document).ready(function() {
 
   $( '#ufa' ).on( 'submit', function(e) {
     e.preventDefault();
+    $('#enter').disabled = true;
     $.ajax({
       type: "POST",
       url: '/enter_offer',
@@ -36,6 +37,7 @@ $(document).ready(function() {
         });
         errorHtml += '</ul></div>';
         $('#result').html(errorHtml);
+        $('#enter').disabled=false;
       }
     });
   });
@@ -74,7 +76,7 @@ $(document).ready(function() {
           @endforeach
         </select>
         <br>
-        <input type ="submit" value="Enter" />
+        <input id="enter" type ="submit" value="Enter" />
       </form>
 
     </div>
