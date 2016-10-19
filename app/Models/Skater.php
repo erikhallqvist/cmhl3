@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 final class Skater extends Model
 {
   protected $table = 'skaters';
+  public $timestamps = false;
 }
