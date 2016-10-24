@@ -25,7 +25,7 @@ class ParsePlayer
    * TODO: Add storing of farm stats.
    *
    */
-  public function storeSkater($row)
+  public function storeSkater(&$row)
   {
     $skater = new Skater;
     $skills = new SkaterSkills;
