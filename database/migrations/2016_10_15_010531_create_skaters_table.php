@@ -29,6 +29,7 @@ class CreateSkatersTable extends Migration
         $table->integer('contract');
         $table->boolean('rookie');
         $table->integer('salary');
+        $table->integer('status');
       });
     }
 

@@ -6,6 +6,9 @@ namespace App\Services;
    * information coming from CSV and potentially xml files.
    */
 use App\Models\CmhlStats;
+use App\Models\CmhlGoalieStats;
+use App\Models\Goalie;
+use App\Models\GoalieSkills;
 use App\Models\Skater;
 use App\Models\SkaterSkills;
 
@@ -45,6 +48,7 @@ class ParsePlayer
     $skater->contract = $row['Contract'];
     $skater->rookie   = $row['Rookie'];
     $skater->salary   = $row['Salary1'];
+    $skater->status   = $row['Status1'];
 
     $skater->save();
 
@@ -100,6 +104,66 @@ class ParsePlayer
     return $skater->id;
   }
 
+  public function storeGoalie(&$row)
+  {
+    $goalie = new Goalie;
+    $skills = new GoalieSkills;
+    $stats  = new CmhlGoalieStats;
+
+    $goalie->unique   = $row['UniqueID'];
+    $goalie->name     = $row['Name'];
+    $goalie->team     = $row['Team'];
+    $goalie->country  = $row['Country'];
+    $goalie->agedate  = $row['AgeDate'];
+    $goalie->weight   = $row['Weight'];
+    $goalie->height   = $row['Height'];
+    $goalie->contract = $row['Contract'];
+    $goalie->rookie   = $row['Rookie'];
+    $goalie->salary   = $row['Salary1'];
+    $goalie->status   = $row['Status1'];
+
+    $goalie->save();
+
+    $skills->goalie_id  = $goalie->id;
+    $skills->condition  = $row['Condition'];
+    $skills->suspension = $row['Suspension'];
+    $skills->injury     = (strlen($row['Injury']) == 0) ? 0 : $row['Injury'];
+    $skills->SK         = $row['SK'];
+    $skills->DU         = $row['DU'];
+    $skills->EN         = $row['EN'];
+    $skills->SZ         = $row['SZ'];
+    $skills->AG         = $row['AG'];
+    $skills->RB         = $row['RB'];
+    $skills->SC         = $row['SC'];
+    $skills->HS         = $row['HS'];
+    $skills->RT         = $row['RT'];
+    $skills->PH         = $row['PH'];
+    $skills->PS         = $row['PS'];
+    $skills->EX         = $row['EX'];
+    $skills->LD         = $row['LD'];
+    $skills->PO         = $row['PO'];
+    $skills->MO         = $row['MO'];
+
+    $skills->save();
+
+    $stats->goalie_id       = $goalie->id;
+    $stats->progp           = $row['ProGP'];
+    $stats->protime         = $row['ProSecPlay'];
+    $stats->prow            = $row['ProW'];
+    $stats->prol            = $row['ProL'];
+    $stats->prootl          = $row['ProOTL'];
+    $stats->proso           = $row['ProShutout'];
+    $stats->proga           = $row['ProGA'];
+    $stats->propim          = $row['ProPim'];
+    $stats->proa            = $row['ProA'];
+    $stats->props           = $row['ProPenalityShotsShots'];
+    $stats->propsga         = $row['ProPenalityShotsGoals'];
+    $stats->prostarts       = $row['ProStartGoaler'];
+
+    $stats->save();
+
+    return $skater->id;
+  }
 
 
 
