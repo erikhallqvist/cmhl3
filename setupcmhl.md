@@ -58,10 +58,21 @@ Hopefully you'll see a message saying something like
 > Migration table created successfully.
 
 
-Now pull down the code from the repo into your app directory, set up your database tables and
-try to hit your site in a browser. You likely also need to change the entire application's file
-ownership to www-data:www-data or whatever your web user is called. Depending on Lumen version, 
-it's also possible you have a /routing directory where web.php controls your routing rather than 
-/app/Html/routes.php. If so, just create a soft link called web.php to routes, and remember to
-fix file ownership here as well.
+Now pull down the code from the repo into your app directory, you likely also need to change
+the entire application's file ownership to www-data:www-data or whatever your web user is 
+called.
+
+At this point, running migrations and seeds is a good idea.
+
+`php artisan migrate` should execute all migration scripts in database/migrations
+It's possible you get an error message about insufficient privileges, in which case you can
+just use sudo - or set up permissions for running php artisan similar to what www-date has.
+
+Once the tables are all created, a few of the tables need seeding. To do this, run
+`php artisan db:seed`
+If for some reason you get an error saying Class not found, you can do a
+`composer dump-autoload` and then run `php artisan db:seed` again. Why this happens, I do
+not know, but the solution was found at
+http://laravel.io/forum/05-19-2016-class-seeder-name-does-not-exist-problem-solved
+
 

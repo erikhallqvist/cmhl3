@@ -29,6 +29,8 @@ Route::get('/fa', function () {
   return view('fa');
 });
 
+Route::get('/parse_csv', 'ParseCSV@parse');
+
 Route::get('/fa/{id}', function($id) {
   return view('fa_offer', ['id' => $id]);
 });
