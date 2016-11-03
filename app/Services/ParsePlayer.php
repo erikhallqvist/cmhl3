@@ -110,7 +110,7 @@ class ParsePlayer
     $skills = new GoalieSkills;
     $stats  = new CmhlGoalieStats;
 
-    $goalie->unique   = $row['UniqueID'];
+    $goalie->unique   = $row['Number'];
     $goalie->name     = $row['Name'];
     $goalie->team     = $row['Team'];
     $goalie->country  = $row['Country'];
@@ -128,21 +128,21 @@ class ParsePlayer
     $skills->condition  = $row['Condition'];
     $skills->suspension = $row['Suspension'];
     $skills->injury     = (strlen($row['Injury']) == 0) ? 0 : $row['Injury'];
-    $skills->SK         = $row['SK'];
-    $skills->DU         = $row['DU'];
-    $skills->EN         = $row['EN'];
-    $skills->SZ         = $row['SZ'];
-    $skills->AG         = $row['AG'];
-    $skills->RB         = $row['RB'];
-    $skills->SC         = $row['SC'];
-    $skills->HS         = $row['HS'];
-    $skills->RT         = $row['RT'];
-    $skills->PH         = $row['PH'];
-    $skills->PS         = $row['PS'];
-    $skills->EX         = $row['EX'];
-    $skills->LD         = $row['LD'];
-    $skills->PO         = $row['PO'];
-    $skills->MO         = $row['MO'];
+    $skills->sk         = $row['SK'];
+    $skills->du         = $row['DU'];
+    $skills->en         = $row['EN'];
+    $skills->sz         = $row['SZ'];
+    $skills->ag         = $row['AG'];
+    $skills->rb         = $row['RB'];
+    $skills->sc         = $row['SC'];
+    $skills->hs         = $row['HS'];
+    $skills->rt         = $row['RT'];
+    $skills->ph         = $row['PH'];
+    $skills->ps         = $row['PS'];
+    $skills->ex         = $row['EX'];
+    $skills->ld         = $row['LD'];
+    $skills->po         = $row['PO'];
+    $skills->mo         = $row['MO'];
 
     $skills->save();
 
@@ -162,7 +162,7 @@ class ParsePlayer
 
     $stats->save();
 
-    return $skater->id;
+    return $goalie->id;
   }
 
 

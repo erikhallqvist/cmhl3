@@ -7,7 +7,7 @@ namespace App\Models;
 #
 use Illuminate\Database\Eloquent\Model;
 #
-final class Goalie extends Model
+final class CmhlGoalieStats extends Model
 {
   protected $table = 'cmhl_goalie_stats';
 }
