@@ -18,7 +18,7 @@ class CreateGoalieSkillsTable extends Migration
           $table->integer('goalie_id');
           $table->integer('condition');
           $table->integer('suspension');
-          $table->integer('injury');
+          $table->string('injury');
           $table->integer('sk');
           $table->integer('du');
           $table->integer('en');

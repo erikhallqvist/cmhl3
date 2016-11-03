@@ -37,6 +37,7 @@ class Team extends Controller
       {
         $skill = SkaterSkills::where('skater_id', '=', $skater->id)->first();
         $skill['name'] = $skater->name;
+        $skill['status'] = $skater->status;
         // Add $ sign here and cut the decimals.
         $skill['salary'] = money_format('%.0n', $skater->salary);
         $skill['contract'] = $skater->contract;

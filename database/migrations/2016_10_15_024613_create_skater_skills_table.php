@@ -18,7 +18,7 @@ class CreateSkaterSkillsTable extends Migration
         $table->integer('skater_id');
         $table->integer('condition');
         $table->integer('suspension');
-        $table->integer('injury');
+        $table->string('injury');
         $table->integer('CK');
         $table->integer('FG');
         $table->integer('DI');
