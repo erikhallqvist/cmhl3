@@ -1,3 +1,9 @@
+<?php
+  $html_path = env("SIM_FILE_STORE", "") . env("SIM_SEASON", "") . '/' .
+               env("LEAGUE_NAME", "") . env("SIM_SEASON", "");
+
+?>
+
 <div id="bannertop" >
   <a href="index.php">
     <div style="float:left; width:20%"><img src="/images/yandle.png" alt="CMHL Award Winners" border="0" /></div>
@@ -11,7 +17,9 @@
       <li><a href="http://cmhlrangers.proboards.com/">Forums</a></li>
       <li><a href="#">League Vitals</a>
         <ul>
-          <li><a href="#">League Files</a></li>
+        <li><a href=<?= env('SIM_FILE_STORE', '') . env('SIM_SEASON', '') . "/"
+        . env('LEAGUE_NAME', '') . env('SIM_SEASON', '') . ".stc"
+        ?> >League File</a></li>
           <li><a href="#">Submit Lines</a></li>
           <li><a href="#">Team Info</a>
             <ul>
@@ -31,26 +39,26 @@
           <li><a href="#">Salary Negotiations</a>
             <ul>
               <li><a href="#">RFA/Loyalty</a></li>
-              <li><a href="#">UFA</a></li>
+              <li><a href="/ufa_offers">UFA</a></li>
             </ul>
           </li>
-          <li><a href="<?=env("DIR_SIM_OUTPUT") . 'S12/CMHLS12-InjurySuspension.html' ?>">Injuries/Suspensions</a></li>
+          <li><a href="<?=$html_path . '-TeamInjurySuspension.html'?>">Injuries/Suspensions</a></li>
         </ul>
       </li>
       <li><a href="#">Results</a>
         <ul>
           <li><a href="#">CMHL</a>
             <ul>
-              <li><a href="<?=env("DIR_SIM_OUTPUT") . 'S12/CMHLS12-TodayGames.html' ?>">Next Games</a></li>
-              <li><a href="<?=env("DIR_SIM_OUTPUT") . 'S12/CMHLS12-Schedule.html' ?>">Schedule</a></li>
-              <li><a href="<?=env("DIR_SIM_OUTPUT") . 'S12/CMHLS12-Standing.html' ?>">Standings</a></li>
+              <li><a href="<?=$html_path . '-TodayGames.html' ?>">Next Games</a></li>
+              <li><a href="<?=$html_path .  '-Schedule.html' ?>">Schedule</a></li>
+              <li><a href="<?=$html_path .  '-ProStanding.html' ?>">Standings</a></li>
             </ul>
           </li>
           <li><a href="#">ICHF</a>
             <ul>
-              <li><a href="<?=env("DIR_SIM_OUTPUT") . 'S12/CMHLS12-TodayGames.html' ?>">Next Games</a></li>
-              <li><a href="<?=env("DIR_SIM_OUTPUT") . 'S12/CMHLS12-FarmTeamSchedule.html' ?>">Schedule</a></li>
-              <li><a href="<?=env("DIR_SIM_OUTPUT") . 'S12/CMHLS12-FarmStanding.html' ?>">Standings</a></li>
+              <li><a href="<?=$html_path . '-TodayGames.html' ?>">Next Games</a></li>
+              <li><a href="<?=$html_path . '-FarmTeamSchedule.html' ?>">Schedule</a></li>
+              <li><a href="<?=$html_path . '-FarmStanding.html' ?>">Standings</a></li>
             </ul>
           </li>
         </ul>

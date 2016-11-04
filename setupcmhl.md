@@ -34,8 +34,7 @@ and uncomment the line with
 
 then rename your `.env.example` file `.env` and edit it
 enter a string for your `APP_KEY` (Laravel recommends it to be at least 32 characters long)
-and remember to change `APP_DEBUG` to false before using
-for production
+and remember to change `APP_DEBUG` to false before using for production
 
 Enter the information for your database connection. In our case it would look something like
 `DB\_CONNECTION=pgsql`
@@ -43,9 +42,13 @@ Enter the information for your database connection. In our case it would look so
 `DB\_PORT=5432`
 and so on.
 
-Create a `DIR_SIM_OUTPUT` global that will point at the directory where you plan to place
-your sim files.
+Create the globals that will point at the directories where you plan to place
+your sim files. Here's how our simmers have it set up:
 
+LEAGUE_NAME=CMHL
+SIM_FILE_STORE=http://yourdreambuilders.ca/hockey/
+SIM_SEASON=S13
+OUTPUT_FILE_DIR=XML
 
 Now you're ready to to see if the application can find the database. This step technically
 isn't necessary as we're not using migrations in the base application, but it's a good way
