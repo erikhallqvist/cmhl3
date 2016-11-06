@@ -33,7 +33,7 @@ class ParseCSV extends Controller
      */
     public function parse()
     {
-      $filename = 'http://yourdreambuilders.ca/hockey/XML/CMHLS13-PRE-Players.csv';
+      $filename = 'http://yourdreambuilders.ca/hockey/XML/CMHLS13-Players.csv';
       /*
        * Grab the header row of the CSV and use it as named index on the
        * rest of the rows.
@@ -88,7 +88,7 @@ class ParseCSV extends Controller
     public function parseGoalies()
     {
       ini_set("auto_detect_line_endings", true);
-      $filename = 'http://yourdreambuilders.ca/hockey/XML/CMHLS13-PRE-Goalies.csv';
+      $filename = 'http://yourdreambuilders.ca/hockey/XML/CMHLS13-Goalies.csv';
       /* Grab the header row, use it to name columns
        *
        */
